@@ -35,5 +35,5 @@ JavaScript метод push () позволяет добавить один, ил
 .length-
  В JavaScript свойство length возвращает длину или количество элементов некоторой сущности (объекта). Например, для строки свойство length вернет количество символов в строке, а для плотного массива - число элементов.
 .const averageTemps = Object.entries(temps).map(item => [item[0], item[1].reduce((acc, value) => Number(value) + acc, 0) / item.length]);- найти среднее значение
-.
+.1
 .
