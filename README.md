@@ -35,5 +35,61 @@ JavaScript метод push () позволяет добавить один, ил
 .length-
  В JavaScript свойство length возвращает длину или количество элементов некоторой сущности (объекта). Например, для строки свойство length вернет количество символов в строке, а для плотного массива - число элементов.
 .const averageTemps = Object.entries(temps).map(item => [item[0], item[1].reduce((acc, value) => Number(value) + acc, 0) / item.length]);- найти среднее значение
-.1
-.
+.const hamidity = data.map((row) => row[3]);
+  
+  const maxHamidity = Math.max(...hamidity)
+  const minHamidity = Math.min(...hamidity)
+  
+  const topHamidity = (String(maxHamidity))
+  const lowHamidity = (String(minHamidity))
+  для определения макс и мин влажности.
+
+  const cities = data.map((row) => row[7]);
+  const citySort = cities.sort()
+  const unique = citySort.filter((item, i, ar) => ar.indexOf(item) === i);
+  для сортировки городов без повторения
+
+  const rows = content.split('\n');
+    const data = rows.slice(1, -1).map((row) => 
+    row.split(',').slice(0, 18).map(el => el.trim())
+  ) для выявления записей с данными в переданном файле
+
+  const date = data.map((row) => row[0]);
+  const temp = data.map((row) => row[1]);
+  
+  const maxTemp = Math.max(...temp)
+  const warmCity = cities[temp.indexOf(String(maxTemp))]
+  const warmDate = date[temp.indexOf(String(maxTemp))]
+  для обнаружения максимальной температуры из массива данных "data"
+
+const temps = data.reduce((acc, value) => {
+    const city = value;
+    if (acc[city[7]]) {
+      acc[city[7]].push(city[1]);
+      return acc;
+    } else {
+      acc[city[7]] = [city[1]];
+      return acc;
+    }
+  }, {});
+  const averageTemps = Object.entries(temps).map(item => [item[0], item[1].reduce((acc, value) => Number(value) + acc, 0) / item.length]);
+  const maxAverageTemp = [...averageTemps].sort((a, b) => b[1] - a[1]);
+  console.log(`HottestCity: ${maxAverageTemp[0][0]}`);
+  находит город с наибольшей средней температурой на основе данных массива "data" и выводит его название в консоль.
+
+const myArray = info.split('\n').slice(1).map((string) => string.slice(0, -1)).slice(0, -1);
+    console.log(`Count: ${myArray.length}`);
+    const allGalaxy = _.uniq(myArray.map((string) => string.split('|')[2])).sort();
+    allGalaxy.splice(0,1);
+    for (let x = 0; x < allGalaxy.length; x += 1) {
+        allGalaxy[x] = allGalaxy[x].replace(' ', '');
+        allGalaxy[x] = allGalaxy[x].slice(0, allGalaxy[x].length - 1);
+    }
+обрабатывает строку "info" и создает массив уникальных галактик, удаляет ненужные символы и пробелы и сохраняет результат в массиве "allGalaxy".
+
+const distance = myArray.map((string) => string.split("|")[5]);
+    distance.splice(0, 1);
+    for (let i = 0; i < distance.length; i += 1) {
+        distance[i] = Number(distance[i]);
+    }Таким образом, эта часть кода создает массив "distance", содержащий расстояние в световых годах для каждого элемента в массиве "myArray". Затем цикл "for" используется для преобразования каждого элемента в число, чтобы можно было использовать эти значения для последующих вычислений.
+    Таким образом, переменная "indexOfCloset" и массив "allStars" создаются для того, чтобы определить, какая звезда является ближайшей в массиве "myArray", что может быть использовано для последующих вычислений или вывода информации.
